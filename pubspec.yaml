@@ -29,3 +29,8 @@ flutter:
       fonts:
         - asset: assets/fonts/Dongle-Regular.ttf
         - asset: assets/fonts/Dongle-Bold.ttf 
+
+    - family: BargIcon
+      fonts:
+        - asset: assets/fonts/MyIcons.ttf
+  
