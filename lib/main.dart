@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'barg',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'OpenSans',
       ),
       home: const Scaffold(),
     );
