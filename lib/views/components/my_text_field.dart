@@ -18,7 +18,7 @@ class MyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       style: TextStyle(
-        fontSize: 16,
+        fontSize: 24,
         color: Colors.green.shade800,
         fontWeight: FontWeight.bold,
         letterSpacing: 1.2,

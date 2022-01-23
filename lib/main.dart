@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'barg',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'OpenSans',
+        primarySwatch: Colors.green,
+        fontFamily: 'Dongle',
       ),
       home: LoginScreen(),
     );

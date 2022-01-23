@@ -25,7 +25,7 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: OpenSans
+    - family: Dongle
       fonts:
-        - asset: assets/fonts/OpenSans-Regular.ttf
-        - asset: assets/fonts/OpenSans-Bold.ttf 
+        - asset: assets/fonts/Dongle-Regular.ttf
+        - asset: assets/fonts/Dongle-Bold.ttf 
