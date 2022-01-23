@@ -24,8 +24,8 @@ class MyTextField extends StatelessWidget {
         letterSpacing: 1.2,
       ),
       obscureText: false,
-      // controller: controller,
-      // validator: validator,
+      controller: controller,
+      validator: validator,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
         hintText: hint,
@@ -33,13 +33,13 @@ class MyTextField extends StatelessWidget {
           color: Colors.grey,
           fontWeight: FontWeight.normal,
         ),
-        // errorBorder: const UnderlineInputBorder(
-        //   borderSide: BorderSide(
-        //     color: errorTextColor,
-        //     width: 2,
-        //   ),
-        // ),
-        // errorStyle: errorTextStyle,
+        errorBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.red,
+            width: 2,
+          ),
+        ),
+        // errorStyle: Colors.red,
       ),
     );
   }

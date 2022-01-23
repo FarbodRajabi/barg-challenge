@@ -1,6 +1,7 @@
 import 'package:barg/views/components/my_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:barg/my_icons_icons.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -29,6 +30,26 @@ class LoginScreen extends StatelessWidget {
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
+                  ),
+                ),
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 82),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      Icon(
+                        MyIcons.leaf,
+                        color: Colors.white,
+                        size: 68,
+                      ),
+                      Text(
+                        'Barg',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 68,
+                        ),
+                      )
+                    ],
                   ),
                 ),
               ),
