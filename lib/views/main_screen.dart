@@ -1,4 +1,5 @@
 import 'package:barg/views/components/user_card.dart';
+import 'package:barg/views/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -28,7 +29,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                // Get.to(page)
+                Get.to(ProfileScreen());
               },
             ),
             const Text(
