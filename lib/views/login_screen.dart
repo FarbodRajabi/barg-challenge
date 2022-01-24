@@ -1,5 +1,6 @@
 import 'package:barg/controllers/login_controller.dart';
 import 'package:barg/views/components/my_text_field.dart';
+import 'package:barg/views/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:barg/my_icons_icons.dart';
@@ -21,6 +22,7 @@ class LoginScreen extends StatelessWidget {
     if (formKey.currentState!.validate()) {
       if (userName == 'Koch Hartman' && password == '12345678') {
         print('login success.');
+        Get.to(MainScreen());
       }
     } else {
       print('login failed.');
