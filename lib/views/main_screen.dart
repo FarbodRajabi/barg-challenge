@@ -8,7 +8,43 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Row(
+          children: [
+            GestureDetector(
+              child: Container(
+                margin: const EdgeInsets.only(right: 12),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    width: 1.2,
+                    color: Colors.white,
+                  ),
+                  shape: BoxShape.circle,
+                ),
+                child: const CircleAvatar(
+                  radius: 24,
+                  backgroundImage: NetworkImage('http://placehold.it/32x32'),
+                ),
+              ),
+              onTap: () {
+                // Get.to(page)
+              },
+            ),
+            const Text(
+              'Koch Hartman',
+              style: TextStyle(
+                fontSize: 32,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 2,
+              ),
+            ),
+          ],
+        ),
+        // actions: [
+
+        // ],
+      ),
       body: Center(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
