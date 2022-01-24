@@ -1,3 +1,4 @@
+import 'package:barg/controllers/login_controller.dart';
 import 'package:barg/views/components/my_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,21 @@ class LoginScreen extends StatelessWidget {
 
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  final LoginController c = Get.put(LoginController());
+
+  login() {
+    final userName = userNameController.text;
+    final password = passwordController.text;
+
+    if (formKey.currentState!.validate()) {
+      if (userName == 'Koch Hartman' && password == '12345678') {
+        print('login success.');
+      }
+    } else {
+      print('login failed.');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,8 +104,12 @@ class LoginScreen extends StatelessWidget {
                                 isPassword: false,
                                 controller: userNameController,
                                 validator: (value) {
-                                  if (value!.isEmpty || value.length < 4) {
+                                  if (value!.isEmpty) {
+                                    return 'Username must not be empty';
+                                  } else if (value.length < 4) {
                                     return 'Provide a valid username';
+                                  } else if (value != 'Koch Hartman') {
+                                    return 'There is no username like this';
                                   } else {
                                     return null;
                                   }
@@ -97,11 +117,13 @@ class LoginScreen extends StatelessWidget {
                               ),
                               MyTextField(
                                 hint: 'password',
-                                isPassword: false,
-                                controller: userNameController,
+                                isPassword: true,
+                                controller: passwordController,
                                 validator: (value) {
-                                  if (value!.isEmpty || value.length < 4) {
-                                    return 'Provide a valid username';
+                                  if (value!.isEmpty) {
+                                    return 'Password must not be empty';
+                                  } else if (value.length < 8) {
+                                    return 'Password must have at least 7 characters';
                                   } else {
                                     return null;
                                   }
@@ -109,16 +131,20 @@ class LoginScreen extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Checkbox(
-                                    value: true,
-                                    onChanged: (_) {},
-                                    shape: const CircleBorder(),
-                                    checkColor: Colors.white,
-                                    side: BorderSide(
-                                      color: Colors.green.shade800,
-                                      width: 2,
-                                    ),
-                                  ),
+                                  Obx(() {
+                                    return Checkbox(
+                                      value: c.rememberMe.value,
+                                      onChanged: (value) {
+                                        c.rememberMe(value);
+                                      },
+                                      shape: const CircleBorder(),
+                                      checkColor: Colors.white,
+                                      side: BorderSide(
+                                        color: Colors.green.shade800,
+                                        width: 2,
+                                      ),
+                                    );
+                                  }),
                                   const Text(
                                     'Remember me',
                                     style: TextStyle(
@@ -147,7 +173,9 @@ class LoginScreen extends StatelessWidget {
                             height: Get.height * .06,
                             width: Get.width,
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                login();
+                              },
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
