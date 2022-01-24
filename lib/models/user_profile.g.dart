@@ -22,8 +22,8 @@ _$_UserProfile _$$_UserProfileFromJson(Map<String, dynamic> json) =>
       address: json['address'] as String,
       about: json['about'] as String,
       registered: json['registered'] as String,
-      latitude: json['latitude'] as String,
-      longitude: json['longitude'] as String,
+      latitude: (json['latitude'] as num).toDouble(),
+      longitude: (json['longitude'] as num).toDouble(),
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
       friends: (json['friends'] as List<dynamic>?)
               ?.map((e) => Friend.fromJson(e as Map<String, dynamic>))

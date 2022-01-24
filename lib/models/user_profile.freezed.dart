@@ -37,8 +37,8 @@ class _$UserProfileTearOff {
       required String address,
       required String about,
       required String registered,
-      required String latitude,
-      required String longitude,
+      required double latitude,
+      required double longitude,
       required List<String> tags,
       List<Friend> friends = const [],
       required String greeting,
@@ -91,8 +91,8 @@ mixin _$UserProfile {
   String get address => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
   String get registered => throw _privateConstructorUsedError;
-  String get latitude => throw _privateConstructorUsedError;
-  String get longitude => throw _privateConstructorUsedError;
+  double get latitude => throw _privateConstructorUsedError;
+  double get longitude => throw _privateConstructorUsedError;
   List<String> get tags => throw _privateConstructorUsedError;
   List<Friend> get friends => throw _privateConstructorUsedError;
   String get greeting => throw _privateConstructorUsedError;
@@ -124,8 +124,8 @@ abstract class $UserProfileCopyWith<$Res> {
       String address,
       String about,
       String registered,
-      String latitude,
-      String longitude,
+      double latitude,
+      double longitude,
       List<String> tags,
       List<Friend> friends,
       String greeting,
@@ -223,11 +223,11 @@ class _$UserProfileCopyWithImpl<$Res> implements $UserProfileCopyWith<$Res> {
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       longitude: longitude == freezed
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -270,8 +270,8 @@ abstract class _$UserProfileCopyWith<$Res>
       String address,
       String about,
       String registered,
-      String latitude,
-      String longitude,
+      double latitude,
+      double longitude,
       List<String> tags,
       List<Friend> friends,
       String greeting,
@@ -371,11 +371,11 @@ class __$UserProfileCopyWithImpl<$Res> extends _$UserProfileCopyWithImpl<$Res>
       latitude: latitude == freezed
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       longitude: longitude == freezed
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
-              as String,
+              as double,
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
@@ -453,9 +453,9 @@ class _$_UserProfile implements _UserProfile {
   @override
   final String registered;
   @override
-  final String latitude;
+  final double latitude;
   @override
-  final String longitude;
+  final double longitude;
   @override
   final List<String> tags;
   @JsonKey()
@@ -552,8 +552,8 @@ abstract class _UserProfile implements UserProfile {
       required String address,
       required String about,
       required String registered,
-      required String latitude,
-      required String longitude,
+      required double latitude,
+      required double longitude,
       required List<String> tags,
       List<Friend> friends,
       required String greeting,
@@ -591,9 +591,9 @@ abstract class _UserProfile implements UserProfile {
   @override
   String get registered;
   @override
-  String get latitude;
+  double get latitude;
   @override
-  String get longitude;
+  double get longitude;
   @override
   List<String> get tags;
   @override

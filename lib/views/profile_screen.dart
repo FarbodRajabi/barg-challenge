@@ -1,38 +1,16 @@
+import 'package:barg/models/user_profile.dart';
+import 'package:barg/views/components/friend_card.dart';
 import 'package:barg/views/components/shape01.dart';
 import 'package:barg/views/components/user_info_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final bool isOwner;
-  final String name,
-      balance,
-      eyeColor,
-      company,
-      email,
-      gender,
-      phone,
-      address,
-      about,
-      registered,
-      greeting;
-  final int age;
+  final UserProfile userProfile;
 
   const ProfileScreen({
     Key? key,
-    required this.isOwner,
-    required this.name,
-    required this.balance,
-    required this.eyeColor,
-    required this.company,
-    required this.email,
-    required this.gender,
-    required this.phone,
-    required this.address,
-    required this.about,
-    required this.registered,
-    required this.greeting,
-    required this.age,
+    required this.userProfile,
   }) : super(key: key);
 
   @override
@@ -45,10 +23,7 @@ class ProfileScreen extends StatelessWidget {
             _userInfo(),
             _greeting(),
             Container(
-              // width: Get.width,
-              // height: 200,
               margin: const EdgeInsets.symmetric(horizontal: 12),
-              // color: Colors.grey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -58,19 +33,26 @@ class ProfileScreen extends StatelessWidget {
                       fontSize: 26,
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     height: 120,
                     child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          return FriendCard();
-                        },
-                        separatorBuilder: (context, index) {
-                          return const SizedBox(
-                            width: 12,
-                          );
-                        },
-                        itemCount: 8),
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return FriendCard(
+                          userProfile: userProfile.friends[index],
+                          onPress: () {
+                            Get.to(
+                                () => ProfileScreen(userProfile: userProfile));
+                          },
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return const SizedBox(
+                          width: 12,
+                        );
+                      },
+                      itemCount: userProfile.friends.length,
+                    ),
                   )
                 ],
               ),
@@ -110,7 +92,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           Text(
-            greeting,
+            userProfile.greeting,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -148,17 +130,17 @@ class ProfileScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                UserInfoText(title: 'balance', text: balance),
+                UserInfoText(title: 'balance', text: userProfile.balance),
                 const Spacer(),
-                UserInfoText(title: 'age', text: age.toString()),
+                UserInfoText(title: 'age', text: userProfile.age.toString()),
               ],
             ),
-            UserInfoText(title: 'company', text: company),
-            UserInfoText(title: 'eyeColor', text: eyeColor),
-            UserInfoText(title: 'e-mail', text: email),
-            UserInfoText(title: 'phone', text: phone),
-            UserInfoText(title: 'register', text: registered),
-            UserInfoText(title: 'address', text: address),
+            UserInfoText(title: 'company', text: userProfile.company),
+            UserInfoText(title: 'eyeColor', text: userProfile.eyeColor),
+            UserInfoText(title: 'e-mail', text: userProfile.email),
+            UserInfoText(title: 'phone', text: userProfile.phone),
+            UserInfoText(title: 'register', text: userProfile.registered),
+            UserInfoText(title: 'address', text: userProfile.address),
             RichText(
               textAlign: TextAlign.justify,
               text: TextSpan(
@@ -171,7 +153,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: about,
+                    text: userProfile.about,
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.grey[700],
@@ -202,16 +184,16 @@ class ProfileScreen extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Text(
-                    'Koch Hartman',
-                    style: TextStyle(
+                  Text(
+                    userProfile.name,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2,
                     ),
                   ),
-                  isOwner
+                  userProfile.isOwner
                       ? Container(
                           margin: const EdgeInsets.symmetric(horizontal: 6),
                           height: 24,
@@ -258,59 +240,6 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class FriendCard extends StatelessWidget {
-  const FriendCard({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 80,
-      height: 100,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: Colors.green.shade800,
-        ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                width: 1.2,
-                color: Colors.white,
-              ),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.white.withOpacity(.5),
-                  blurRadius: 13,
-                  offset: const Offset(4, 4),
-                ),
-              ],
-            ),
-            child: const CircleAvatar(
-              radius: 24,
-              backgroundImage: NetworkImage('http://placehold.it/32x32'),
-            ),
-          ),
-          Text(
-            'Farbod Rajabi',
-            style: TextStyle(
-              fontSize: 16,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

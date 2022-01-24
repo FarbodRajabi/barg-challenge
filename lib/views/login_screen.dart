@@ -19,14 +19,15 @@ class LoginScreen extends StatelessWidget {
     final userName = userNameController.text;
     final password = passwordController.text;
 
-    if (formKey.currentState!.validate()) {
-      if (userName == 'Koch Hartman' && password == '12345678') {
-        print('login success.');
-        Get.to(MainScreen());
-      }
-    } else {
-      print('login failed.');
-    }
+    // if (formKey.currentState!.validate()) {
+    //   if (userName == 'Koch Hartman' && password == '12345678') {
+    //     print('login success.');
+    //     Get.to(MainScreen());
+    //   }
+    // } else {
+    //   print('login failed.');
+    // }
+    Get.to(MainScreen());
   }
 
   @override

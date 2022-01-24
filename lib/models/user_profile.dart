@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'dart:convert';
 
 import 'friend.dart';
 
@@ -22,8 +23,8 @@ class UserProfile with _$UserProfile {
     required String address,
     required String about,
     required String registered,
-    required String latitude,
-    required String longitude,
+    required double latitude,
+    required double longitude,
     required List<String> tags,
     @Default([]) List<Friend> friends,
     required String greeting,
@@ -33,3 +34,6 @@ class UserProfile with _$UserProfile {
   factory UserProfile.fromJson(Map<String, dynamic> json) =>
       _$UserProfileFromJson(json);
 }
+
+List<UserProfile> userFromJson(String str) => List<UserProfile>.from(
+    json.decode(str).map((x) => UserProfile.fromJson(x)));
