@@ -1,6 +1,5 @@
 import 'package:barg/views/components/shape01.dart';
 import 'package:barg/views/components/user_info_text.dart';
-import 'package:barg/views/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
