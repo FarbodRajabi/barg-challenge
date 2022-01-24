@@ -12,24 +12,25 @@ class UserInfoText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
-        text: TextSpan(
-      children: [
-        TextSpan(
-          text: '$title : ',
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey[700],
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: '$title : ',
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey[700],
+            ),
           ),
-        ),
-        TextSpan(
-          text: text,
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.green.shade800,
-            fontWeight: FontWeight.bold,
+          TextSpan(
+            text: text,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.green.shade800,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-        ),
-      ],
-    ));
+        ],
+      ),
+    );
   }
 }
