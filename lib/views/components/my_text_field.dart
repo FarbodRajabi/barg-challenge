@@ -23,12 +23,13 @@ class MyTextField extends StatelessWidget {
         fontWeight: FontWeight.bold,
         letterSpacing: 1.2,
       ),
-      obscureText: false,
+      obscureText: isPassword,
       controller: controller,
       validator: validator,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.zero,
+        // contentPadding: EdgeInsets.zero,
         hintText: hint,
+        suffixIcon: isPassword ? Icon(Icons.remove_red_eye_outlined) : null,
         hintStyle: const TextStyle(
           color: Colors.grey,
           fontWeight: FontWeight.normal,
@@ -39,7 +40,9 @@ class MyTextField extends StatelessWidget {
             width: 2,
           ),
         ),
-        // errorStyle: Colors.red,
+        errorStyle: const TextStyle(
+          fontSize: 18,
+        ),
       ),
     );
   }
