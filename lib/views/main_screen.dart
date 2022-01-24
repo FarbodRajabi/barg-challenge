@@ -29,7 +29,25 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Get.to(ProfileScreen());
+                Get.to(
+                  const ProfileScreen(
+                    isOwner: true,
+                    email: 'kochhartman@bisba.com',
+                    about:
+                        'Voluptate magna est elit esse aliqua minim aliqua veniam elit reprehenderit. Veniam anim ex ea proident. Proident in dolor et proident elit elit anim. Culpa sit ea consectetur proident tempor mollit. Fugiat cillum ut officia enim in excepteur incididunt incididunt duis. Voluptate proident sit exercitation et qui. Laboris voluptate fugiat in excepteur mollit velit occaecat duis cupidatat adipisicing excepteur Lorem do Lorem.\r\n',
+                    address: '755 Vermont Court, Rote, Indiana, 1362',
+                    balance: '\$1,835.03',
+                    company: 'BISBA',
+                    eyeColor: 'green',
+                    gender: 'male',
+                    name: 'Koch Hartman',
+                    phone: '+1 (923) 566-2621',
+                    registered: '2016-06-14T12:33:12 -05:-30',
+                    greeting:
+                        'Hello, Koch Hartman! You have 4 unread messages.',
+                    age: 34,
+                  ),
+                );
               },
             ),
             const Text(
