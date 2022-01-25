@@ -13,47 +13,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Row(
-          children: [
-            GestureDetector(
-              child: Container(
-                margin: const EdgeInsets.only(right: 12),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1.2,
-                    color: Colors.white,
-                  ),
-                  shape: BoxShape.circle,
-                ),
-                child: const CircleAvatar(
-                  radius: 18,
-                  backgroundImage: NetworkImage('http://placehold.it/32x32'),
-                ),
-              ),
-              onTap: () {
-                Get.to(
-                  ProfileScreen(
-                    userProfile: mainController.usersList[0],
-                  ),
-                );
-              },
-            ),
-            const Text(
-              'Koch Hartman',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 2,
-              ),
-            ),
-          ],
-        ),
-        // actions: [
-
-        // ],
-      ),
+      appBar: _appBar(),
       body: Obx(
         () {
           return Center(
@@ -98,6 +58,55 @@ class MainScreen extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+
+  AppBar _appBar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      title: Row(
+        children: [
+          GestureDetector(
+            child: Container(
+              height: 34,
+              width: 34,
+              margin: const EdgeInsets.only(right: 12),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 1.2,
+                  color: Colors.white,
+                ),
+                shape: BoxShape.circle,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: const FadeInImage(
+                  placeholder: AssetImage('assets/default_picture.png'),
+                  image: NetworkImage('http://placehold.it/32x32'),
+                ),
+              ),
+            ),
+            onTap: () {
+              Get.to(
+                ProfileScreen(
+                  userProfile: mainController.usersList[0],
+                ),
+              );
+            },
+          ),
+          const Text(
+            'Koch Hartman',
+            style: TextStyle(
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 2,
+            ),
+          ),
+        ],
+      ),
+      // actions: [
+
+      // ],
     );
   }
 

@@ -33,6 +33,7 @@ flutter:
 
   assets:
     - assets/userPrfofile.json
+    - assets/default_picture.png
 
   fonts:
     - family: Dongle

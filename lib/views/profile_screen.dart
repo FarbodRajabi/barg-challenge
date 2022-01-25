@@ -1,17 +1,21 @@
+import 'package:barg/controllers/profile_controller.dart';
 import 'package:barg/models/user_profile.dart';
 import 'package:barg/views/components/friend_card.dart';
 import 'package:barg/views/components/shape01.dart';
 import 'package:barg/views/components/user_info_text.dart';
+import 'package:barg/views/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
   final UserProfile userProfile;
 
-  const ProfileScreen({
+  ProfileScreen({
     Key? key,
     required this.userProfile,
   }) : super(key: key);
+
+  final controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +45,9 @@ class ProfileScreen extends StatelessWidget {
                         return FriendCard(
                           userProfile: userProfile.friends[index],
                           onPress: () {
+                            print('=======================');
+                            final user = controller
+                                .getUserById(userProfile.friends[index].guid);
                             Get.to(
                                 () => ProfileScreen(userProfile: userProfile));
                           },
@@ -66,7 +73,7 @@ class ProfileScreen extends StatelessWidget {
   Container _greeting() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
-      padding: const EdgeInsets.symmetric(vertical: 4),
+      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
       width: Get.width,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -94,6 +101,7 @@ class ProfileScreen extends StatelessWidget {
           Text(
             userProfile.greeting,
             maxLines: 3,
+            textAlign: TextAlign.justify,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontSize: 22,

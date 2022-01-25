@@ -1,5 +1,4 @@
 import 'package:barg/models/friend.dart';
-import 'package:barg/models/user_profile.dart';
 import 'package:flutter/material.dart';
 
 class FriendCard extends StatelessWidget {
